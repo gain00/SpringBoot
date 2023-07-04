@@ -1,4 +1,4 @@
-package wjdwo1104.hello.boot.springboot;
+package wjdwo1104.hello.boot.spring5boot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
