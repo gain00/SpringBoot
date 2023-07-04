@@ -12,7 +12,7 @@
     <header class="row" >
         <div class="col"><h2>Lorem Ipsum</h2>  </div>
         <div class="col text-end">
-            <button type="button" class="btn btn-danger mt-1">로그인</button>
+            <button type="button" class="btn btn-danger mt-1" data-bs-target="#loginfrm" data-bs-toggle="modal">로그인</button>
             <button type="button" class="btn btn-primary mt-1">회원가입</button>
         </div>
 
@@ -104,6 +104,24 @@
     </footer>
 </div>
 
+    <!-- login modal -->
+    <div class="modal" id="loginfrm" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>로그인</h2>
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">닫기</button>
+                </div><!--mdh-->
+                <div class="modal-body"></div><!--mdb-->
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-danger" id="loginbtn">로그인</button>
+                    <button type="button" class="btn btn-warning ">아이디/비밀번호 찾기</button>
+
+                </div><!--mdf-->
+            </div><!--mdc-->
+        </div><!--mdd-->
+
+    </div>
 
 <script src="/assets/js/bootstrap.bundle.min.js"></script>
 </body>
