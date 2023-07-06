@@ -37,10 +37,8 @@ checkbtn2?.addEventListener('click',() => {
     }else if(!frm.infoagree.checked){
         alert('주민등록번호 처리에 동의해주세요');
     }else{
-        let params = '?name' + frm.name.value;
-        params += '&jumin1=' + frm.jumin1.value;
-        params += '&jumin2=' + frm.jumin2.value;
-        location.href='/join/joinme' + params;
+      frm.method = 'post';
+      frm.submit();
     }
 });
 
