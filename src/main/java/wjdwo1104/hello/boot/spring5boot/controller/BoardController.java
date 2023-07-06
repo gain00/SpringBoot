@@ -15,7 +15,7 @@ public class BoardController {
 
     Logger logger = LogManager.getLogger(BoardController.class);
 
-    @GetMapping("list")
+    @GetMapping("/list")
     public String board(){
         logger.info("board 호출");
         return "board/list";

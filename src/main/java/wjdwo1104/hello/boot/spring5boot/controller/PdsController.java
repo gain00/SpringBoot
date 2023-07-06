@@ -15,7 +15,7 @@ public class PdsController {
 
     Logger logger = LogManager.getLogger(GalleryController.class);
 
-    @GetMapping("list")
+    @GetMapping("/list")
     public String index(){
         logger.info("gallery 호출");
         return "pds/list";
