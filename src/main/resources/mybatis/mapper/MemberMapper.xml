@@ -14,7 +14,7 @@
         select * from member2
     </select>
 
-    <select id="findZipcode" resultType="zipcode">
+    <select id="findZipcode" resultType="Zipcode">
         select * from zipcode2013 where dong like #{dong}
     </select>
 
