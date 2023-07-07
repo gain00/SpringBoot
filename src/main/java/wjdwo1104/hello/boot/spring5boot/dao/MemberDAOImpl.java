@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import wjdwo1104.hello.boot.spring5boot.model.Member;
+import wjdwo1104.hello.boot.spring5boot.model.Zipcode;
 import wjdwo1104.hello.boot.spring5boot.mybatis.MemberMapper;
 
 import java.util.List;
@@ -16,9 +17,6 @@ public class MemberDAOImpl implements MemberDAO{
     // 단, 생성자 주입 방식 사용
     @Autowired
     final MemberMapper memberMapper;
-
-    @Autowired
-    private SqlSession sqlSession;
 
 
     @Override
@@ -33,6 +31,11 @@ public class MemberDAOImpl implements MemberDAO{
 
 
         return memberMapper.selectMember();
+    }
+
+    @Override
+    public List<Zipcode> selectzip(String dong) {
+        return memberMapper.findZipcode();
     }
 
 
