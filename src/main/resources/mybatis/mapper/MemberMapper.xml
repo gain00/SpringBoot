@@ -14,4 +14,8 @@
         select * from member2
     </select>
 
+    <select id="findZipcode" resultType="zipcode">
+        select * from zipcode2013 where dong like #{dong}
+    </select>
+
 </mapper>

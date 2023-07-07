@@ -2,6 +2,7 @@ package wjdwo1104.hello.boot.spring5boot.mybatis;
 
 import org.apache.ibatis.annotations.Mapper;
 import wjdwo1104.hello.boot.spring5boot.model.Member;
+import wjdwo1104.hello.boot.spring5boot.model.Zipcode;
 
 import java.util.List;
 
@@ -9,4 +10,10 @@ import java.util.List;
 public interface MemberMapper {
     int insertMember(Member m);
     List<Member> selectMember();
+
+
+
+    List<Zipcode> findZipcode();
 }
+
+
