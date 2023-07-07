@@ -16,7 +16,7 @@ import wjdwo1104.hello.boot.spring5boot.model.Member;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-@RunWith(SpringRunner.class)
+
 @MybatisTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Import(MemberDAOImpl.class)
