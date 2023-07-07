@@ -8,5 +8,5 @@ import java.util.List;
 @Mapper
 public interface MemberMapper {
     int insertMember(Member m);
-    List<Member> selelctMember();
+    List<Member> selectMember();
 }
