@@ -11,8 +11,10 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import wjdwo1104.hello.boot.spring5boot.model.Member;
 import wjdwo1104.hello.boot.spring5boot.mybatis.MemberMapper;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
 @MybatisTest
@@ -33,5 +35,14 @@ public class MemberMapperUnitTest {
 
     }
 
+    @Test
+    @DisplayName("MemberMapper Test")
+    void selectMember(){
+
+        List<Member> result = memberMapper.selectMember();
+        System.out.println(result);
+        assertNotNull(result);
+
+    }
 
 }
