@@ -112,13 +112,13 @@ fzipbtn?.addEventListener('click',()=>{
 sendzip?.addEventListener('click',()=>{
     let addr = addrlist.value;
     let frm = document.forms.joinfrm;
-    if(vaddr !== ''){
+    if(addr !== ''){
         //123-456 서울 관악구 신림동
-        let zip = addr.split(' ');//우편번호 추출
-        let vaddr = `${addr.split(' ')[1]} ${addr.split(' ')[2]} ${addr.split(' ')[3]}`;//주소 추출
+        let zip = addr.split('');//우편번호 추출
+        let addr = `${addr.split(' ')[1]} ${addr.split(' ')[2]} ${addr.split(' ')[3]}`;//주소 추출
         frm.zip1.value = zip.split('-')[0];
         frm.zip2.value = zip.split('-')[1];
-        frm.addr1.value = vaddr;
+        frm.addr1.value = addr;
 
         modal.hide();
     } else {
@@ -136,4 +136,10 @@ email3.addEventListener('click',() => {
         frm.email2.readOnly = true;
         frm.email2.value = email3.value;
     }
+});
+
+//우편번호 검색 엔터키 차단
+dong?.addEventListener('keydown', (e) => {
+    if (e.keyCode===13) //엔터키(13)가 입력되면
+        e.preventDefault(); // 이벤트 전파 방지
 });
