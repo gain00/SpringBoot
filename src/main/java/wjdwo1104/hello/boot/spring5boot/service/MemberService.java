@@ -8,7 +8,11 @@ import java.util.List;
 public interface MemberService {
 
     boolean saveMember(Member m);
+
     List<Member> readMember();
 
     String findzip(String dong) throws JsonProcessingException;
+
+    int checkuid(String uid);
+
 }
