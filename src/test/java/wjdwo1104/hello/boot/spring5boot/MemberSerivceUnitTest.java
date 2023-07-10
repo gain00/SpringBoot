@@ -29,7 +29,7 @@ public class MemberSerivceUnitTest {
     @Test
     @DisplayName("MemberDAO insert Test")
     void saveMember(){
-        Member m = new Member(null,"","","","","","","","",null);
+        Member m = new Member(null,"","","","","","","","","",null);
 
         boolean result = msrv.saveMember(m);
         System.out.println(result);

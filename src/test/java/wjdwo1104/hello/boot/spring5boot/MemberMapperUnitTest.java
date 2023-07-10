@@ -27,7 +27,7 @@ public class MemberMapperUnitTest {
     @Test
     @DisplayName("MemberMapper Test")
     void insertMember(){
-        Member m = new Member(null,"","","","","","","","",null);
+        Member m = new Member(null,"","","","","","","","","",null);
 
         int result = memberMapper.insertMember(m);
         System.out.println(result);

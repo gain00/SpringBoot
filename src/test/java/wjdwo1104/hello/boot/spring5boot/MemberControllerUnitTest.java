@@ -32,7 +32,7 @@ public class MemberControllerUnitTest {
     @DisplayName("MemberController save Test")
     @Transactional
     void saveMember() throws Exception {
-        Member m = new Member(null,"","","","","","","","",null);
+        Member m = new Member(null,"","","","","","","","","",null);
 
       mvc.perform(post("/join/joinme")
               .param("userid","abc123a")
