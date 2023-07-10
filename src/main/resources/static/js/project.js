@@ -62,9 +62,31 @@ cancelbtn2?.addEventListener('click',()=>{
 
 // joinme
 let sendzip = document.querySelector('#sendzip');
-let zipbtn = document.querySelector('#findzipbtn');
+let fzipbtn = document.querySelector('#findzipbtn');
+let zipbtn = document.querySelector('#zipbtn');
+let zipmodal = document.querySelector('#zipmodal');
+
+
 let dong = document.querySelector('#dong');
 let addrlist  = document.querySelector('#addrlist');
+let modal = null; // 우편번호 모달
+zipbtn?.addEventListener('click',()=>{
+    while (addrlist.lastChild){
+        addrlist.removeChild(addrlist.lastChild);
+    }// 이전 검색 결과 지움
+    dong.value = ''; // 이전 검색 키워드 지움
+
+
+    try{
+        // 새로운 모달 창 생성
+        modal = new bootstrap.Modal(zipmodal, {});
+
+    }catch (e){}
+    modal.show(); // 모달창 띄우기
+});
+
+
+
 const showzipaddr = (jsons) => {
     jsons = JSON.parse(jsons); // 문자열을 객체로 변환 그럼 자바스크립트로 받을수있다
     let addr = '';
@@ -74,7 +96,7 @@ const showzipaddr = (jsons) => {
     addrlist.innerHTML = addr;
 
 };
-zipbtn?.addEventListener('click',()=>{
+fzipbtn?.addEventListener('click',()=>{
     if (dong.value === '') {
         alert('동이름을 입력하세요11!');
         return;
@@ -87,13 +109,15 @@ zipbtn?.addEventListener('click',()=>{
 sendzip?.addEventListener('click',()=>{
     let addr = addrlist.value;
     let frm = document.forms.joinfrm;
-    if(addr !== ''){
+    if(vaddr !== ''){
         //123-456 서울 관악구 신림동
         let zip = addr.split(' ');//우편번호 추출
         let vaddr = `${addr.split(' ')[1]} ${addr.split(' ')[2]} ${addr.split(' ')[3]}`;//주소 추출
         frm.zip1.value = zip.split('-')[0];
         frm.zip2.value = zip.split('-')[1];
-        frm.addr1.value = addr;
+        frm.addr1.value = vaddr;
+
+        modal.hide();
     } else {
         alert('주소를 선택하세요!');
     }
