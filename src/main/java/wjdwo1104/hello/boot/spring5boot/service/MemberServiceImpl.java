@@ -55,8 +55,10 @@ public class MemberServiceImpl implements MemberService {
     public String findzip(String dong) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         String json = "";
-        dong = dong + '%';
+        dong = dong + '%';   // 부분검색 가능하도록 재조정
+
         json = mapper.writeValueAsString( mdao.selectzip(dong) );
+
         return json;
     }
 }
