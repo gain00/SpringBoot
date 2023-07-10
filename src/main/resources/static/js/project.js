@@ -109,20 +109,23 @@ fzipbtn?.addEventListener('click',()=>{
     fetch(url).then(response => response.text()).then(text => showzipaddr(text));
 });
 
-sendzip?.addEventListener('click',()=>{
-    let addr = addrlist.value;
+
+sendzip?.addEventListener('click', () => {
     let frm = document.forms.joinfrm;
-    if(addr !== ''){
-        //123-456 서울 관악구 신림동
-        let zip = addr.split('');//우편번호 추출
-        let addr = `${addr.split(' ')[1]} ${addr.split(' ')[2]} ${addr.split(' ')[3]}`;//주소 추출
+    let addr = addrlist.value;   // 선택한 주소 항목
+    if (addr !== '') {
+        // 123-456 서울 관악구 신림동
+        let zip = addr.split(' ')[0];  // 우편번호 추출
+        let addrs = addr.split(' ');
+        let vaddr = `${addrs[1]} ${addrs[2]} ${addrs[3]}`; // 주소추출
+
         frm.zip1.value = zip.split('-')[0];
         frm.zip2.value = zip.split('-')[1];
-        frm.addr1.value = addr;
+        frm.addr1.value = vaddr;
 
-        modal.hide();
+        modal.hide();    // 모달창 닫음
     } else {
-        alert('주소를 선택하세요!');
+        alert('주소를 선택하세요!!');
     }
 });
 
@@ -142,4 +145,47 @@ email3.addEventListener('click',() => {
 dong?.addEventListener('keydown', (e) => {
     if (e.keyCode===13) //엔터키(13)가 입력되면
         e.preventDefault(); // 이벤트 전파 방지
+});
+//비밀번호 확인
+
+let pwd = document.joinfrm.passwd;
+let repwd = document.joinfrm.repasswd;
+let pwdmsg = document.querySelector("#pwdmsg");
+
+repwd?.addEventListener('blur', () =>{
+    let pmsg = '비밀번호가 서로 일치하지 않습니다';
+    pwdmsg.className = 'text-danger';
+    if(pwd.value === repwd.value){
+       pmsg = '비밀번호가 서로 일치합니다';
+        pwdmsg.className = 'text-primary';
+    }
+    pwdmsg.innerText = pmsg;
+});
+
+//아이디 중복 검사
+let userid = document.joinfrm.userid;
+let checkuid = document.joinfrm.checkuid;
+let uidmsg = document.querySelector("#uidmsg");
+
+const styleCheckuid = (chkuid) => {
+    let umsg = '사용 불가능한 아이디입니다!!';
+    uidmsg.className = 'text-danger';
+    checkuid.value = 'no';
+    if(chkuid === '0'){
+        umsg = '사용가능한 아이디입니다';
+        uidmsg.className = 'text-primary';
+        checkuid.value = 'yes';
+    }
+    uidmsg.innerText = umsg;
+};
+userid?.addEventListener('blur',()=>{
+    if (userid.value === '') {
+       uidmsg.innerText = '6~16 자의 영문 소문자, 숫자와 특수기호(_)만 사용할 수 있습니다'
+        uidmsg.className = 'text-danger';
+
+        return;
+    }
+
+    const url = '/join/checkuid/'+ userid.value;
+    fetch(url).then(response => response.text()).then(text => styleCheckuid(text));
 });
