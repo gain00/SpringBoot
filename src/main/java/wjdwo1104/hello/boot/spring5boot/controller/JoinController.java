@@ -61,7 +61,7 @@ public class JoinController {
     @PostMapping("/joinme")
     public String joinmeok(Member m){
         logger.info("joinmeok 호출");
-        String viewPage= "redirect:/join/jail";
+        String viewPage= "redirect:/join/fail";
 
         if (msrv.saveMember(m)){
             viewPage = "redirect:/join/joinok";
