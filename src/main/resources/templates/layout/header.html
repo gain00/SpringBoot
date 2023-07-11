@@ -5,18 +5,18 @@
     <header class="row" >
       <div class="col"><h2>Lorem Ipsum</h2>  </div>
       <div class="col text-end">
-        <th:block th:if="${#strings.isEmpty(session.member)}">
+
+        <th:block th:if="${not #strings.startsWith(#request.getRequestURI(), '/join')}">
+          <th:block th:if="${#strings.isEmpty(session.member)}">
           <button type="button" class="btn btn-danger mt-1" data-bs-target="#loginfrm" data-bs-toggle="modal">로그인</button>
           <button type="button" class="btn btn-primary mt-1">회원가입</button>
         </th:block>
-
-        <th:block th:if="${not #strings.isEmpty(session.member)}">
+          <th:block th:if="${not #strings.isEmpty(session.member)}">
           <button type="button" class="btn btn-dark mt-1"  id="lgoutbtn">로그아웃</button>
           <button type="button" class="btn btn-success mt-1">회원정보</button>
         </th:block>
+        </th:block>
       </div>
-
-
     </header>
 
 
