@@ -16,6 +16,8 @@ public interface MemberMapper {
 
 
     int selectOneUserid(String uid);
+
+    Member selectOneMember(Member m);
 }
 
 
