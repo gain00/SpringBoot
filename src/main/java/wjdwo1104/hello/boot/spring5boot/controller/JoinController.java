@@ -2,6 +2,7 @@ package wjdwo1104.hello.boot.spring5boot.controller;
 
 
 
+import org.apache.ibatis.javassist.CtBehavior;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +56,11 @@ public class JoinController {
     @GetMapping("/joinme")
     public String joinme(){
         logger.info("joinme 호출");
+
+
+
         return "join/joinme";
+
     }
 
     @PostMapping("/joinme")
