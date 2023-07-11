@@ -249,9 +249,13 @@ loginbtn?.addEventListener('click',()=>{
         lgfrm.action = 'join/login';
         lgfrm.submit();
     }
+});
 
+//logout
+let lgoutbtn = document.querySelector("#lgoutbtn");
 
-
+lgoutbtn?.addEventListener('click', () =>{
+    location.href = 'join/logout';//나머지 작업은 컨트롤러에서 다처리해서 여기선 이동만시켜줌
 });
 
 
