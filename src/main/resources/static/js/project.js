@@ -133,7 +133,7 @@ sendzip?.addEventListener('click', () => {
 });
 
 //전자우편 주소 선택
-email3.addEventListener('click', () => {
+email3?.addEventListener('click', () => {
     let frm = document.forms.joinfrm;
     if (email3.value === '직접입력하기') {
         frm.email2.readOnly = false;
@@ -234,5 +234,24 @@ go2idx?.addEventListener('click',()=>{
     location.href= '/';
 });
 
+//login
+let loginbtn = document.querySelector("#loginbtn");
+let lguid = document.querySelector("#userid");
+let lgpwd = document.querySelector("#passwd");
+let lgfrm =document.querySelector("#lgnfrm");
+
+loginbtn?.addEventListener('click',()=>{
+
+    if(lguid.value ==='') alert('아이디를 입력하세요');
+    else if (lgpwd.value ==='') alert('비밀번호를 입력하세요');
+    else {
+        lgfrm.method = 'post';
+        lgfrm.action = 'join/login';
+        lgfrm.submit();
+    }
+
+
+
+});
 
 
