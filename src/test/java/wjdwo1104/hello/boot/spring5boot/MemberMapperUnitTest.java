@@ -45,4 +45,19 @@ public class MemberMapperUnitTest {
 
     }
 
+    @Test
+    @DisplayName("MemberMapper selelctOneMember Test")
+    void selectOneMember(){
+        Member m = new Member();
+        m.setUserid("abc123");
+        m.setPasswd("987xyz");
+
+        Member result = memberMapper.selectOneMember(m);
+
+        System.out.println(result);
+        assertNotNull(result);
+
+    }
+
+
 }
