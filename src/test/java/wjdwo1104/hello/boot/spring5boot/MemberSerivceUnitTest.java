@@ -47,5 +47,18 @@ public class MemberSerivceUnitTest {
 
     }
 
+    @Test
+    @DisplayName("MemberDAO Test")
+    void readOneMember(){
+        Member m = new Member();
+        m.setUserid("abc123");
+        m.setPasswd("987xyz");
+
+       Member result = msrv.readOneMember(m);
+
+        System.out.println(result);
+        assertNotNull(result);
+
+    }
 
 }
