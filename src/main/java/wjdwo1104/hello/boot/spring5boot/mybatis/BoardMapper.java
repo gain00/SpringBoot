@@ -13,7 +13,7 @@ public interface BoardMapper {
 
     List<Board> selectBoard();
 
-    Board selectOneBoard(Board b);
+    Board selectOneBoard(String bno);
 }
 
 
