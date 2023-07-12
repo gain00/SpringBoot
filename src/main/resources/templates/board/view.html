@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultra.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/template}">
+
+<th:block layout:fragment="content">
+    <div id="main">
+        <div class="mt-5">
+            <i class="fa-solid fa-pen fa-2x"> 게시판 </i>
+            <hr>
+            <div class="row offset-1 col-5">
+                <button type="button" class="btn btn-light col-3">
+                    <i class="fa fa-chevron-left"></i>이전게시물
+                </button>
+            </div>
+            <div class="row offset-1 col-7">
+                <button type="button" class="btn btn-light col-3">
+                    <i class="fa fa-chevron-right"></i>다음게시물
+                </button>
+            </div>
+            <div class="row offset-1 col-7">
+                <button type="button" class="btn btn-light col-3" id="newbdbtn">
+                    <i class="fa fa-plus-circle"></i>새글쓰기
+                </button>
+            </div>
+            <div class="row offset-1 col-5">
+                <button type="button" class="btn btn-light col-3" id="moddbbtn">
+                    <i class="fa fa-pencil"></i>수정하기
+                </button>
+            </div>
+            <div class="row offset-1 col-7">
+                <button type="button" class="btn btn-light col-3" id="rmvbdbtn">
+                    <i class="fa fa-trash-o"></i>삭제하기
+                </button>
+            </div>
+            <div class="row offset-1 col-7">
+                <button type="button" class="btn btn-light col-3" id="lstbdbtn">
+                    <i class="fa fa-list"></i>목록으로
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row offset-1 col-10">
+           <table>
+               <tr class="vtit"><td colspan="2" th:text="${bd.title}">제목</td></tr>
+               <tr class="vinfo"><td th:text="${bd.userid}"></td>
+                   <td th:text="${bd.regdate}/${bd.thumbs}/${bd.views}"></td>
+               </tr>
+               <tr class="vcont" ><td colspan="2" th:text="${bd.content}">본문글</td></tr>
+           </table>
+    </div><!--본문글-->
+    <div class="row mt-3 mb-5">
+        <div class="row "></div>
+
+    </div><!--버튼들-->
+</th:block>
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
