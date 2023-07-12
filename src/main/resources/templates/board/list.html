@@ -61,13 +61,13 @@
 
                         </tr>
 
-                        <tr>
-                            <th>1</th>
-                            <th>시간은 금이라구!!</th>
-                            <th>운영자</th>
-                            <th>2023-05-01</th>
-                            <th>567</th>
-                            <th>1234</th>
+                        <tr th:each="bd : ${bds}"><!--Controller에서 넘겨준 bds(여러개)에서 bd하나씩 foreach문으로 뽑아온다-->
+                            <td th:text="${bd.bno}">1</td>
+                            <td th:text="${bd.title}">시간은 금이라구!!</td>
+                            <td th:text="${bd.userid}">운영자</td>
+                            <td th:text="${#strings.substring(bd.regdate,0,10)}">2023-05-01</td>
+                            <td th:text="${bd.thumbs}">567</td>
+                            <td th:text="${bd.views}">1234</td>
 
                         </tr>
                     </tbody>
