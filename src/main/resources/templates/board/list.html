@@ -8,7 +8,7 @@
             <i class="fa-solid fa-pen fa-2xl"> 게시판 </i>
             <hr>
         </div>
-        <div class="row">
+        <div class="row mt-5 mb-3">
             <div class = "row offset-1 col-7">
                 <div class = "col-2">
                     <select class="form-select" id="findtype">
@@ -30,13 +30,13 @@
                 </div>
             </div>
             <div class = "col-3 text-end">
-                <button type = "button" class="btn btn-light">
+                <button type = "button" class="btn btn-light" id="newbdntn">
                     <i class="fa fa-plus-circle"></i>새글쓰기
                 </button>
             </div>
         </div><!--검색 및 새글쓰기-->
 
-        <div class="row">
+        <div class="row mt-5 mb-3">
             <div class="offset-1 col-10">
                 <table class="table table-striped tbborder">
                     <thead class="thbg">
@@ -63,8 +63,8 @@
 
                         <tr th:each="bd : ${bds}"><!--Controller에서 넘겨준 bds(여러개)에서 bd하나씩 foreach문으로 뽑아온다-->
                             <td th:text="${bd.bno}">1</td>
-                            <td><a href="|/board/view/${bd.bno}|"
-                                   th:text = "${bd.title}">시간은 금이라구!!</a></td>
+                            <td><a th:href="|/board/view/${bd.bno}|"
+                                   th:text="${bd.title}">시간은 금이라구, 친구!</a></td>
                             <td th:text="${bd.userid}">운영자</td>
                             <td th:text="${#strings.substring(bd.regdate,0,10)}">2023-05-01</td>
                             <td th:text="${bd.thumbs}">567</td>
@@ -76,23 +76,17 @@
             </div>
         </div><!--게시판리스트-->
 
-        <div class="row">
+        <div class="row mt-3 mb-5">
             <div class="offset-1 col-10">
-                <nav>
+                <nav class="pagination justify-content-center">
                     <ul class="pagination">
                         <li class="page-item"><a href="#" class="page-link">처음</a></li>
                         <li class="page-item"><a href="#" class="page-link">이전</a></li>
 
-                        <li class="page-item"><a href="" class="page-link">1</a></li>
-                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item active"><a href="#" class="page-link">5</a></li>
-                        <li class="page-item"><a href="#" class="page-link">6</a></li>
-                        <li class="page-item"><a href="#" class="page-link">7</a></li>
-                        <li class="page-item"><a href="#" class="page-link">8</a></li>
-                        <li class="page-item"><a href="#" class="page-link">9</a></li>
-                        <li class="page-item"><a href="#" class="page-link">10</a></li>
+                        <th:block th:each="i : ${#numbers.sequence(1,10)}">
+                            <li th:class="${(i ne cpg) ? 'page-item': 'page-item active'}">
+                              <a th:href="|/board/list/${i}|" class="page-link" th:text="${i}"></a></li>
+                        </th:block>
 
                         <li class="page-item"><a href="#" class="page-link">다음</a></li>
                         <li class="page-item"><a href="#" class="page-link">끝</a></li>
