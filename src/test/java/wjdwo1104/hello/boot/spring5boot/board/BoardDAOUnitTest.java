@@ -9,10 +9,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.context.annotation.Import;
 import wjdwo1104.hello.boot.spring5boot.dao.BoardDAO;
 import wjdwo1104.hello.boot.spring5boot.dao.BoardDAOImpl;
-import wjdwo1104.hello.boot.spring5boot.dao.MemberDAO;
-import wjdwo1104.hello.boot.spring5boot.dao.MemberDAOImpl;
 import wjdwo1104.hello.boot.spring5boot.model.Board;
-import wjdwo1104.hello.boot.spring5boot.model.Member;
 
 import java.util.List;
 
@@ -30,7 +27,8 @@ public class BoardDAOUnitTest {
     @Test
     @DisplayName("BoardDAO select Test")
     void selectBoard() {
-        List<Board> results = bdao.selectBoard();
+        int stnum=1;
+        List<Board> results = bdao.selectBoard(stnum);
         //System.out.println(resutls);
         assertNotNull(results);
     }
