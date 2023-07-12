@@ -8,13 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.context.annotation.Import;
 import wjdwo1104.hello.boot.spring5boot.dao.BoardDAOImpl;
-import wjdwo1104.hello.boot.spring5boot.dao.MemberDAOImpl;
 import wjdwo1104.hello.boot.spring5boot.model.Board;
-import wjdwo1104.hello.boot.spring5boot.model.Member;
 import wjdwo1104.hello.boot.spring5boot.service.BoardService;
 import wjdwo1104.hello.boot.spring5boot.service.BoardServiceImpl;
-import wjdwo1104.hello.boot.spring5boot.service.MemberService;
-import wjdwo1104.hello.boot.spring5boot.service.MemberServiceImpl;
 
 import java.util.List;
 
@@ -35,8 +31,9 @@ public class BoardSerivceUnitTest {
     @Test
     @DisplayName("BoardService read Test")
     void readBoard(){
+        int cpg =1;
 
-        List<Board> result = bsrv.readBoard();
+        List<Board> result = bsrv.readBoard(cpg);
         System.out.println(result);
         assertNotNull(result);
 
