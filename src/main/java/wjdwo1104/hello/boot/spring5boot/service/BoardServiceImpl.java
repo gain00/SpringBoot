@@ -1,14 +1,9 @@
 package wjdwo1104.hello.boot.spring5boot.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import wjdwo1104.hello.boot.spring5boot.dao.BoardDAO;
-import wjdwo1104.hello.boot.spring5boot.dao.MemberDAO;
 import wjdwo1104.hello.boot.spring5boot.model.Board;
-import wjdwo1104.hello.boot.spring5boot.model.Member;
 
 import java.util.List;
 
@@ -26,8 +21,9 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public List<Board> readBoard() {
-        return bdao.selectBoard();
+    public List<Board> readBoard(Integer cpg) {
+        int stnum = (cpg-1) * 25;
+        return bdao.selectBoard(stnum);
     }
 
     @Override
