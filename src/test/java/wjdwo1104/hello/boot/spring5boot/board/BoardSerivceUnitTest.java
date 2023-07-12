@@ -7,6 +7,7 @@ import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.context.annotation.Import;
+import org.springframework.transaction.annotation.Transactional;
 import wjdwo1104.hello.boot.spring5boot.dao.BoardDAOImpl;
 import wjdwo1104.hello.boot.spring5boot.model.Board;
 import wjdwo1104.hello.boot.spring5boot.service.BoardService;
@@ -49,6 +50,21 @@ public class BoardSerivceUnitTest {
         assertNotNull(result);
 
     }
+    @Test
+    @DisplayName("boardMapper select Test")
+    @Transactional
+    void saveBoard(){
+        Board b = new Board();
+        b.setUserid("abc123a");
+        b.setTitle("테스트");
+        b.setContent("테스트");
+        b.setIpaddr("127.0.0.1");
+        boolean result =  bsrv.saveBoard(b);
+
+        assertEquals(result,1);
+    }
+
+
 
 
 }
