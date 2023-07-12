@@ -10,5 +10,9 @@ public interface BoardService {
 
     boolean saveBoard(Board b);
 
+    List<Board> readBoard();
+
+    Board readOneBoard(String bno);
+
 
 }
