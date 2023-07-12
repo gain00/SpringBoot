@@ -9,6 +9,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -33,6 +34,34 @@ public class BoardControllerUnitTest {
               .andExpect(status().isOk())
               .andDo(print());
     }
+
+    @Test
+    @DisplayName("BoardController view Test")
+    void view() throws Exception {
+
+        mvc.perform(get("/board/view/1347"))
+
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("BoardController write Test")
+    @Transactional
+    void write() throws Exception {
+
+        mvc.perform(post("/board/write")
+                        .param("title","")
+                        .param("userid","abc123")
+                        .param("content","")
+                        .param("ipaddr",""))
+
+                .andExpect(status().is3xxRedirection())
+                .andDo(print());
+    }
+
+
+
 
 
 }
