@@ -1,7 +1,6 @@
 package wjdwo1104.hello.boot.spring5boot.dao;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import wjdwo1104.hello.boot.spring5boot.model.Board;
 
@@ -26,8 +25,8 @@ public class BoardDAOImpl implements BoardDAO {
     }
 
     @Override
-    public List<Board> selectBoard() {
-        return boardMapper.selectBoard();
+    public List<Board> selectBoard(int stnum) {
+        return boardMapper.selectBoard(stnum);
     }
 
     @Override
