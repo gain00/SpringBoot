@@ -34,6 +34,12 @@ public class BoardController {
         m.addAttribute("cntpg",bsrv.countBoard());//총페이지
         m.addAttribute("stpg",((cpg - 1) / 10)*10+1 );//총페이지
 
+        //만일 현재페이지가 가 총페이지수 보다 크다면
+        //cpg를 1로 강제초기화
+        if(cpg>(int)m.getAttribute("cntpg")){
+            return "redirect:/board/list/1";
+
+        }
         return "board/list";
     }
 
