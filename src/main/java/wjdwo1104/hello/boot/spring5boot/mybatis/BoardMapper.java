@@ -12,6 +12,8 @@ public interface BoardMapper {
     List<Board> selectBoard(int stnum);
 
     Board selectOneBoard(String bno);
+
+    int updateViewBoard(String bno);
 }
 
 
