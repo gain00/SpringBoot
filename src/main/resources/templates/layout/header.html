@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-
-  <th:block th:fragment="header">
+<th:block th:fragment="header">
+  <header class="row">
     <div class="col"><h1 id="logo">Lorem Ipsum</h1></div>
     <div class="col text-end">
       <th:block th:if="${not #strings.startsWith(#request.getRequestURI(), '/join')}">
@@ -17,25 +17,22 @@
         </th:block>
       </th:block>
     </div>
-    </header>
+  </header>
 
-
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
-      <ul class="navbar-nav nav-fill w-100">
-        <li class="nav-item"><a href="/intro" class="nav-link">프로젝트소개</a></li>
-
-        <li class="nav-item">
-            <a href="/join/agree"
-               th:class="(${#strings.isEmpty(session.member)})? 'nav-link ': 'nav-link disabled'">회원가입</a>
-        </li>
-
-        <li class="nav-item"><a href="/board/list/1" class="nav-link">게시판</a></li>
-        <li class="nav-item"><a href="/pds/list/1"class="nav-link">자료실</a></li>
-        <li class="nav-item"><a href="/gallery/list/1" class="nav-link">갤러리</a></li>
-        <li class="nav-item"><a href="/admin" class="nav-link">관리자</a></li>
-      </ul>
-    </nav>
-  </th:block>
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <ul class="navbar-nav nav-fill w-100">
+      <li class="nav-item"><a href="/intro" class="nav-link">프로젝트 소개</a></li>
+      <li class="nav-item">
+        <a href="/join/agree"
+           th:class=
+                   "(${#strings.isEmpty(session.member)})
+                                ? 'nav-link' : 'nav-link disabled'">회원가입</a>
+      </li>
+      <li class="nav-item"><a href="/board/list/1" class="nav-link">게시판</a></li>
+      <li class="nav-item"><a href="/pds/list/1" class="nav-link">자료실</a></li>
+      <li class="nav-item"><a href="/gallery/list/1" class="nav-link">갤러리</a></li>
+      <li class="nav-item"><a href="/admin" class="nav-link">관리자</a></li>
+    </ul>
+  </nav>
+</th:block>
 </html>
-
-
