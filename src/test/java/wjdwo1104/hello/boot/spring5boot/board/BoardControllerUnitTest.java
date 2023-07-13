@@ -60,6 +60,14 @@ public class BoardControllerUnitTest {
                 .andDo(print());
     }
 
+    @Test
+    @DisplayName("BoardController save Test")
+    void findBoard() throws Exception {
+
+        mvc.perform(get("/board/find/1/title/수확"))
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
 
 
 
