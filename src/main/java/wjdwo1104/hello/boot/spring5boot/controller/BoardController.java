@@ -31,6 +31,7 @@ public class BoardController {
         // bsrv.readBoard() 메서드를 호출하여 그 결과(게시판 목록)를 가져옴
         // 이 결과를 모델 객체에 "bds"라는 이름으로 추가. 이를 통해 뷰에서 이 데이터에 접근 가능
         m.addAttribute("cpg",cpg);//현재페이지
+        m.addAttribute("cntpg",bsrv.countBoard());//총페이지
         return "board/list";
     }
 
