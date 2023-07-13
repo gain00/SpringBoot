@@ -68,6 +68,17 @@ public class BoardMapperUnitTest {
         assertEquals(result,1);
     }
 
+    @Test
+    @DisplayName("updateOneBoard  Test")
+
+    void countpage(){
+
+
+        int result =  boardMapper.selectCountBoard();
+
+        assertNotNull(result);
+    }
+
 
 
 
