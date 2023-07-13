@@ -22,5 +22,10 @@
     </update>
 
 
+    <select id="selectCountBoard">
+        Select ceil(count(bno)/25) pages from board2;
+    </select>
+
+
 
 </mapper>
