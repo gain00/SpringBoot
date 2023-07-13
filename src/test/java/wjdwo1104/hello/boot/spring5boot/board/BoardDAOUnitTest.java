@@ -12,7 +12,9 @@ import wjdwo1104.hello.boot.spring5boot.dao.BoardDAO;
 import wjdwo1104.hello.boot.spring5boot.dao.BoardDAOImpl;
 import wjdwo1104.hello.boot.spring5boot.model.Board;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -65,6 +67,21 @@ public class BoardDAOUnitTest {
         assertNotNull(result);
     }
 
+
+    @Test
+    @DisplayName("findBoard  Test")
+    void findBoard(){
+        Map<String, Object> params = new HashMap<>();
+        params.put("findtype","titcont");
+        params.put("findkey","기자");
+        params.put("stnum",0);
+
+        List<Board> results =  bdao.selectFindBoard(params);
+
+
+        assertNotNull(results);
+
+    }
 
 
 
