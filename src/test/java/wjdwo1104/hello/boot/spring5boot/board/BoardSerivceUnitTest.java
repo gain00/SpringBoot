@@ -65,6 +65,14 @@ public class BoardSerivceUnitTest {
     }
 
 
+    @Test
+    @DisplayName("boardService count Test")
+    void countBoard(){
+
+        int result =  bsrv.countBoard();
+
+        assertNotNull(result);
+    }
 
 
 }
