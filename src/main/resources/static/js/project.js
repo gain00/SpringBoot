@@ -281,10 +281,6 @@ lstbdbtn?.addEventListener('click',()=>{
     location.href = '/board/list/1';
 });
 
-let newbdntn = document.querySelector("#newbdntn")
-newbdntn?addEventListener('click',()=>{
-    ff
-});
 
 //board write
 let wrtbtn = document.querySelector("#wrtbtn");
@@ -305,5 +301,11 @@ wrtbtn?.addEventListener('click',()=>{
 });
 cancelbtn3?.addEventListener('click',()=>{
     location.href = '/board/list/1';
+});
+
+
+let newbdntn = document.querySelector("#newbdntn")
+newbdntn?.addEventListener('click',()=>{
+    location.href = '/board/write';
 });
 
