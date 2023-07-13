@@ -12,4 +12,6 @@ public interface BoardDAO {
     List<Board> selectBoard(int stnum);
 
     Board selectOneBoard(String bno);//bno로 매개변수 주는이유 몇번째 글번호를 찾을것인지
+
+    int selectCountBoard();
 }
