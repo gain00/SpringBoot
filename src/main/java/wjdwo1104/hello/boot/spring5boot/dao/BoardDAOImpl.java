@@ -8,6 +8,7 @@ import wjdwo1104.hello.boot.spring5boot.mybatis.BoardMapper;
 
 
 import java.util.List;
+import java.util.Map;
 
 @Repository("bdao")//이 클래스를 Spring에서 데이터 접근 객체(DAO)로 관리하도록 지정. 이름은 "bdao"로 설정
 @RequiredArgsConstructor
@@ -38,6 +39,11 @@ public class BoardDAOImpl implements BoardDAO {
     @Override
     public int selectCountBoard() {
         return boardMapper.selectCountBoard();
+    }
+
+    @Override
+    public List<Board> selectFindBoard(Map<String, Object> params) {
+        return boardMapper.selectFindBoard(params);
     }
 
 
