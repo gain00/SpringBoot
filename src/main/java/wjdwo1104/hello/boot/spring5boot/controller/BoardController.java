@@ -32,6 +32,8 @@ public class BoardController {
         // 이 결과를 모델 객체에 "bds"라는 이름으로 추가. 이를 통해 뷰에서 이 데이터에 접근 가능
         m.addAttribute("cpg",cpg);//현재페이지
         m.addAttribute("cntpg",bsrv.countBoard());//총페이지
+        m.addAttribute("stpg",((cpg - 1) / 10)*10+1 );//총페이지
+
         return "board/list";
     }
 
