@@ -71,6 +71,21 @@ public class BoardController {
         return returnPage;
     }
 
+    @GetMapping("/find/{cpg}/{findtype}/{findkey}")//@pathVariable를씀으로써 매개변수 cpg의 값을 주소에 쓸수있음
+    public String find(Model m, @PathVariable Integer cpg,@PathVariable String findtype,@PathVariable String findkey){//moedl m? 컨트롤러는 모델이라는 타입의 객체를 파라미터로 받을수있다 m.addattribue?
+        logger.info("board/find 호출");
+        m.addAttribute("bds",bsrv.readFindBoard(cpg,findtype,findkey));
+        m.addAttribute("cpg",cpg);//현재페이지
+        m.addAttribute("cntpg",bsrv.countBoard());//총페이지
+        m.addAttribute("stpg",((cpg - 1) / 10)*10+1 );//총페이지
+
+        if(cpg>(int)m.getAttribute("cntpg")){
+            return "redirect:/board/list/1";
+
+        }
+        return "board/list";
+    }
+
 
 
 }
