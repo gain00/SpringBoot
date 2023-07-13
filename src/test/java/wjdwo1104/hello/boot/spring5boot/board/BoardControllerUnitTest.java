@@ -30,7 +30,7 @@ public class BoardControllerUnitTest {
     @DisplayName("BoardController save Test")
     void readBoard() throws Exception {
 
-      mvc.perform(get("/board/list"))
+      mvc.perform(get("/board/list/1"))
               .andExpect(status().isOk())
               .andDo(print());
     }
