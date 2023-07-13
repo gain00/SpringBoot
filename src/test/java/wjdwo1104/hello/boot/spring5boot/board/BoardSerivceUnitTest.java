@@ -13,7 +13,9 @@ import wjdwo1104.hello.boot.spring5boot.model.Board;
 import wjdwo1104.hello.boot.spring5boot.service.BoardService;
 import wjdwo1104.hello.boot.spring5boot.service.BoardServiceImpl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -74,5 +76,18 @@ public class BoardSerivceUnitTest {
         assertNotNull(result);
     }
 
+    @Test
+    @DisplayName("BoardService findBoard  Test")
+    void findBoard(){
+        String ftype = "title";
+        String fkey = "수확";
+        int cpg = 1;
 
+
+        List<Board> results =  bsrv.readFindBoard(cpg, ftype, fkey);
+
+
+        assertNotNull(results);
+
+    }
 }
