@@ -42,4 +42,17 @@
         </if>
         order by bno desc limit #{stnum},25
     </select>
+
+    <select id="countFindBoard" parameterType="map" >
+        select count(bno)/25 cntfpg from board2
+        <if test="findtype != 'titcont'">
+            where ${findtype} like concat('%', #{findkey}, '%')
+        </if>
+        <if test="findtype == 'titcont'">
+            where title like concat('%', #{findkey}, '%')
+            or content like concat('%', #{findkey}, '%')
+        </if>
+    </select>
+
+
 </mapper>
