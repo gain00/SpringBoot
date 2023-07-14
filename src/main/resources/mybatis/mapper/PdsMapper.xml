@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="zzyzzy.hello.boot.spring5boot.mybatis.PdsMapper">
+<mapper namespace="wjdwo1104.hello.boot.spring5boot.mybatis.PdsMapper">
 
     <insert id="insertPds" parameterType="Pds">
         insert into pds (userid, title, contents, ipaddr)
@@ -13,8 +13,9 @@
         <!-- select AUTO_INCREMENT pno from information_schema.TABLES
         where TABLE_NAME = 'pds' -->
 
-        select last_insert_id() from pds
+        select last_insert_id() from pds limit 1,1
     </select>
+
     <insert id="insertPdsAttach" parameterType="PdsAttach">
         insert into pdsattach (pno, fname, ftype, fsize)
         values (#{pno}, #{fname}, #{ftype}, #{fsize})
