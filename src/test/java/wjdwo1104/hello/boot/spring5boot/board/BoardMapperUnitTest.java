@@ -97,6 +97,20 @@ public class BoardMapperUnitTest {
 
     }
 
+    @Test
+    @DisplayName("findBoard  Test")
+    void countfindBoard(){
+        Map<String, Object> params = new HashMap<>();
+        params.put("findtype","title");
+        params.put("findkey","코스피");
+;
+
+        int results =  boardMapper.countFindBoard(params);
+
+
+        assertNotNull(results);
+
+    }
 
 
 }
