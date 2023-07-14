@@ -46,5 +46,10 @@ public class BoardDAOImpl implements BoardDAO {
         return boardMapper.selectFindBoard(params);
     }
 
+    @Override
+    public int countFindBoard(Map<String, Object> params) {
+        return boardMapper.countFindBoard(params);
+    }
+
 
 }
