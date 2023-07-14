@@ -1,15 +1,13 @@
 package wjdwo1104.hello.boot.spring5boot.model;
 
 import lombok.*;
-
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class PdsAttach {
 
-    @Setter
-    @Getter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @ToString
-    public class Pds {
         private String pano;
         private String pno;
         private String fname;
@@ -17,7 +15,7 @@ public class PdsAttach {
         private String fsize;
         private String fdown;
 
-    }
+
 
 
 }
