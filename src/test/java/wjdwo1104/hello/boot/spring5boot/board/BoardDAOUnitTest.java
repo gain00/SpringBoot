@@ -83,6 +83,20 @@ public class BoardDAOUnitTest {
 
     }
 
+    @Test
+    @DisplayName("findBoard  Test")
+    void countfindBoard(){
+        Map<String, Object> params = new HashMap<>();
+        params.put("findtype","titcont");
+        params.put("findkey","코스피");
+
+
+        int results =  bdao.countFindBoard(params);
+
+
+        assertNotNull(results);
+
+    }
 
 
 }
