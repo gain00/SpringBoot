@@ -64,7 +64,7 @@ public class BoardControllerUnitTest {
     @DisplayName("BoardController save Test")
     void findBoard() throws Exception {
 
-        mvc.perform(get("/board/find/1/title/수확"))
+        mvc.perform(get("/board/find/title/수확/1"))
                 .andExpect(status().isOk())
                 .andDo(print());
     }
