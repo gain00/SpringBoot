@@ -34,3 +34,39 @@ create table board2 (
     /*foreign key (userid) references member2(userid)*/
 
 );
+
+
+-- bps
+
+create table pds (
+                     pno         int             auto_increment,
+                     title       varchar(100)    not null,
+                     userid      varchar(18)     not null,
+                     regdate     datetime        default current_timestamp,
+                     thumbs      int             default 0,
+                     views       int             default 0,
+                     contnets    text            not null,
+                     ipaddr      varchar(15)     not null,
+                     primary key (pno)
+);
+
+create table pdsattach(
+    pano        int             auto_increment,
+    pno         int             not null, -- 게시글번호
+    fname       varchar(100)    not null, -- uuid포함
+    ftype       varchar(3)      not null,
+    fsize       varchar(3)      not null,
+    fdown       int             default 0,
+    primary key (pano)
+
+
+);
+
+alter table pds
+    add constraint fkpuid
+        foreign key (userid) references member2(userid);
+alter table pdsattach
+    add constraint fkpno
+        foreign key (pno) references pds(pno);
+
+DROP TABLE pds;
