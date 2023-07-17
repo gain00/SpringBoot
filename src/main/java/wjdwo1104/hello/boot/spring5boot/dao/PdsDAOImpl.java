@@ -32,4 +32,19 @@ public class PdsDAOImpl implements PdsDAO {
         return pdsMapper.insertPdsAttach(pa);
     }
 
+    @Override
+    public List<Pds> selectPds(int stnum) {
+        return pdsMapper.selectPds(stnum);
+    }
+
+    @Override
+    public int selectCountPds() {
+        return pdsMapper.selectCountPds();
+    }
+
+    @Override
+    public Pds selectOnePds(String pno) {
+        return pdsMapper.selectOnePds(pno);
+    }
+
 }
