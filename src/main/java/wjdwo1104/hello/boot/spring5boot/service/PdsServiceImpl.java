@@ -8,6 +8,8 @@ import wjdwo1104.hello.boot.spring5boot.model.Pds;
 import wjdwo1104.hello.boot.spring5boot.model.PdsAttach;
 import wjdwo1104.hello.boot.spring5boot.utils.PdsUtils;
 
+import java.util.List;
+
 @Service("psrv")
 @RequiredArgsConstructor
 public class PdsServiceImpl implements PdsService {
@@ -30,5 +32,21 @@ public class PdsServiceImpl implements PdsService {
         //첨부파일 정보를 디비에 저장
         int pacnt = pdao.insertPdsAttach(pa);
         return (pacnt>0) ? true:false;
+    }
+
+    @Override
+    public List<Pds> readPds(Integer cpg) {
+        int stnum = (cpg-1) * 25;
+        return pdao.selectPds(stnum);
+    }
+
+    @Override
+    public int countPds() {
+        return pdao.selectCountPds();
+    }
+
+    @Override
+    public Pds readOnePds(String pno) {
+        return pdao.selectOnePds(pno);
     }
 }

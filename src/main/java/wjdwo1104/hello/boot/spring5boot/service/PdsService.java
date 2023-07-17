@@ -13,4 +13,9 @@ public interface PdsService {
     boolean newPdsAttach(MultipartFile attach, int pno);
 
 
+    List<Pds> readPds(Integer cpg);
+
+    int countPds();
+
+    Pds readOnePds(String pno);
 }
