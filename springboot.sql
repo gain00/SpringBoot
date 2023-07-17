@@ -70,3 +70,19 @@ alter table pdsattach
         foreign key (pno) references pds(pno);
 
 DROP TABLE pds;
+
+
+-- catesian product
+select * from pds p, pdsattach pa;
+
+select * from pds p join pdsattach pa where p.pno = pa.pno;
+
+select * from pds p join pdsattach pa on p.pno = pa.pno where p.pno = '4';
+
+select * from pds p join pdsattach pa using(pno) where p.pno = '4';
+
+-- view
+create view ppa
+as select * from pds p join pdsattach pa using(pno);
+
+select * from ppa where pno ='4';
