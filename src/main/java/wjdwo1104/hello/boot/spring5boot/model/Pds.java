@@ -18,6 +18,6 @@ public class Pds {
     private String contents;
     private String ipaddr;
 
-    private PdsAttach pdsAttach;
+    private PdsAttach pa;
 
 }
