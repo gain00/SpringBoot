@@ -4,24 +4,25 @@
 
 <mapper namespace="wjdwo1104.hello.boot.spring5boot.mybatis.PdsMapper">
     <!--join result-->
+    <!-- join result -->
     <resultMap id="pa" type="PdsAttach">
-        <result column="fname" property="fname"/>
-        <result column="ftype" property="ftype"/>
-        <result column="fsize" property="fsize"/>
-        <result column="fdown" property="fdown"/>
+        <result column="fname" property="fname" />
+        <result column="ftype" property="ftype" />
+        <result column="fsize" property="fsize" />
+        <result column="fdown" property="fdown" />
     </resultMap>
 
     <resultMap id="ppa" type="Pds">
         <result column="pno" property="pno" />
         <result column="title" property="title" />
         <result column="userid" property="userid" />
-        <result column="regdate" property="userid" />
+        <result column="regdate" property="regdate" />
         <result column="thumbs" property="thumbs" />
         <result column="views" property="views" />
         <result column="contents" property="contents" />
         <result column="ipaddr" property="ipaddr" />
 
-        <collection property="pdsAttach" resultMap="pa"/>
+        <collection property="pa" resultMap="pa" />
     </resultMap>
 
     <insert id="insertPds" parameterType="Pds">
@@ -41,8 +42,7 @@
         values (#{pno}, #{fname}, #{ftype}, #{fsize})
     </insert>
 
-
-   <select id="selectPds" resultType="Pds">
+    <select id="selectPds" resultType="Pds">
         select pno, title, userid, regdate, thumbs, views from pds
         order by pno desc limit #{stnum}, 25
     </select>
@@ -55,42 +55,44 @@
         select ceil(count(pno) / 25) cntpg from pds
     </select>
 
+    <select id="selectOnePdsAttach" resultType="PdsAttach">
+        select * from pdsattach where pno = #{pno}
+    </select>
+
     <!--<update id="updateViewPds">
-       update Pds2 set views = views + 1
-       where bno = #{bno}
-   </update>
+        update Pds2 set views = views + 1
+        where bno = #{bno}
+    </update>
 
+    &lt;!&ndash; 동적질의문으로 검색 기능 구현 &ndash;&gt;
+    &lt;!&ndash; 단, 컬럼명이나 테이블명에는 #{}가 아닌 ${}를 사용!!&ndash;&gt;
+    <select id="selectFindPds" parameterType="map" resultType="Pds">
+        select bno, title, userid, regdate, thumbs, views from Pds2
 
+        <if test="findtype != 'titcont'">
+            where ${findtype} like concat('%', #{findkey}, '%')
+        </if>
 
-   &lt;!&ndash; 동적질의문으로 검색 기능 구현 &ndash;&gt;
-   &lt;!&ndash; 단, 컬럼명이나 테이블명에는 #{}가 아닌 ${}를 사용!!&ndash;&gt;
-   <select id="selectFindPds" parameterType="map" resultType="Pds">
-       select bno, title, userid, regdate, thumbs, views from Pds2
+        <if test="findtype == 'titcont'">
+            where title like concat('%', #{findkey}, '%')
+                  or contents like concat('%', #{findkey}, '%')
+        </if>
 
-       <if test="findtype != 'titcont'">
-           where ${findtype} like concat('%', #{findkey}, '%')
-       </if>
+        order by bno desc limit #{stnum}, 25
+    </select>
 
-       <if test="findtype == 'titcont'">
-           where title like concat('%', #{findkey}, '%')
-                 or contents like concat('%', #{findkey}, '%')
-       </if>
+    &lt;!&ndash; 동적질의문으로 검색 기능 구현 2 &ndash;&gt;
+    <select id="countFindPds" parameterType="map">
+        select ceil(count(bno) / 25) cntfpg from Pds2
 
-       order by bno desc limit #{stnum}, 25
-   </select>
+        <if test="findtype != 'titcont'">
+            where ${findtype} like concat('%', #{findkey}, '%')
+        </if>
 
-   &lt;!&ndash; 동적질의문으로 검색 기능 구현 2 &ndash;&gt;
-   <select id="countFindPds" parameterType="map">
-       select ceil(count(bno) / 25) cntfpg from Pds2
-
-       <if test="findtype != 'titcont'">
-           where ${findtype} like concat('%', #{findkey}, '%')
-       </if>
-
-       <if test="findtype == 'titcont'">
-           where title like concat('%', #{findkey}, '%')
-           or contents like concat('%', #{findkey}, '%')
-       </if>
-   </select>
+        <if test="findtype == 'titcont'">
+            where title like concat('%', #{findkey}, '%')
+            or contents like concat('%', #{findkey}, '%')
+        </if>
+    </select>
 -->
 </mapper>
