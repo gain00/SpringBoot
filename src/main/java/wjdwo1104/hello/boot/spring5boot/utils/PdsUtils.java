@@ -1,15 +1,23 @@
 package wjdwo1104.hello.boot.spring5boot.utils;
 
+import com.sun.jndi.toolkit.url.UrlUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.util.UriUtils;
 import wjdwo1104.hello.boot.spring5boot.controller.PdsController;
 import wjdwo1104.hello.boot.spring5boot.model.PdsAttach;
 
 import java.io.File;
 import java.io.IOException;
+
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -52,5 +60,32 @@ public class PdsUtils {
                 .replace(":", "")
                 .replace(".","");
         return uuid;
+    }
+
+    public HttpHeaders getHeader(String fname) {
+        HttpHeaders header = new HttpHeaders();
+        //다운로드할 파일을 인코딩함 - 한글처리
+        fname = UriUtils.encode(fname, StandardCharsets.UTF_8);
+        try{
+            header.add("Content-Type", Files.probeContentType(Paths.get(saveDir + fname)));
+            header.add("Content-DisPostion","attachment; filename=" + fname + "");
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return header;
+    }
+
+    public UrlResource getResource(String fname) {
+        UrlResource resource = null;
+
+        fname = UriUtils.encode(fname, StandardCharsets.UTF_8);
+
+        try{
+            resource = new UrlResource("file:" + saveDir + fname);
+        } catch(Exception ex){
+            ex.printStackTrace();
+        }
+
+        return resource;
     }
 }
