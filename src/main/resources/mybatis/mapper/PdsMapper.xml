@@ -59,6 +59,14 @@
         select * from pdsattach where pno = #{pno}
     </select>
 
+    <select id="insertPdsAttach" resultType="PdsComment">
+       insert into pdscomments (userid, comment, ref, pno)
+        values (#{userid}, #{comment}, #{ref}, #{pno})
+    </select>
+    <select id="selectPdsComment" resultType="PdsComment">
+        select * from pdsComment where pno = #{pno}
+        order by ref
+    </select>
     <!--<update id="updateViewPds">
         update Pds2 set views = views + 1
         where bno = #{bno}
