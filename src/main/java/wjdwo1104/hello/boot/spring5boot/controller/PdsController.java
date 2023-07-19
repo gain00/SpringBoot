@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import wjdwo1104.hello.boot.spring5boot.model.Pds;
+import wjdwo1104.hello.boot.spring5boot.model.PdsComment;
 import wjdwo1104.hello.boot.spring5boot.service.PdsService;
 
 import java.util.Map;
@@ -84,7 +85,9 @@ public class PdsController {
     public String view(Model m, @PathVariable String pno) {
         logger.info("pds/view 호출!!");
 
-        m.addAttribute("p", psrv.readOnePds(pno));
+        m.addAttribute("p", psrv.readOnePds(pno));//본문글
+        m.addAttribute("pcs", psrv.readPdsComment(pno));//댓글,대댓글
+
 
         return "pds/view";
     }
@@ -102,6 +105,40 @@ public class PdsController {
         return ResponseEntity.ok()
                 .headers((HttpHeaders)objs.get("header"))
                 .body((UrlResource)objs.get("resource"));
+    }
+
+    @PostMapping("/cmt/write")
+    public String cmtwriteok(PdsComment pc) {
+        logger.info("pds/cmt/writeok 호출!!");
+
+        String returnPage = "redirect:/pds/fail";
+        //작성한댓글을 테이블에 저장
+        if(psrv.newPdsComment(pc)){
+            //작성한 댓글을 확인하기 위해 바로 본문 출력
+            returnPage = "redirect:/pds/view/"+pc.getPno();
+        }
+
+        // 알아낸 글번호를 이용해서 첨부파일 처리 (디비저장, 업로드)
+     /*   if (!attach.isEmpty()) {// 첨부파일이 존재한다면
+            psrv.newPdsAttach(attach, pno);
+            returnPage = "redirect:/pds/list/1";
+        }
+*/
+        return returnPage;
+    }
+
+    @PostMapping("/reply/write")
+    public String rpywriteok(PdsComment pc) {
+        logger.info("pds/cmt/writeok 호출!!");
+
+        String returnPage = "redirect:/pds/fail";
+     //작성한 대댓글을 테이블에 저장
+        if(psrv.newPdsReply(pc)){
+           //작성한 대댓글을 확인하기 위해 바로 본문 출력
+            returnPage = "redirect:/pds/view/"+pc.getPno();
+        }
+
+        return returnPage;
     }
 
 
