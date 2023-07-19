@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 import wjdwo1104.hello.boot.spring5boot.dao.PdsDAO;
 import wjdwo1104.hello.boot.spring5boot.model.Pds;
 import wjdwo1104.hello.boot.spring5boot.model.PdsAttach;
+import wjdwo1104.hello.boot.spring5boot.model.PdsComment;
 import wjdwo1104.hello.boot.spring5boot.utils.PdsUtils;
 
 import java.util.HashMap;
@@ -68,5 +69,21 @@ public class PdsServiceImpl implements PdsService {
         objs.put("resource",pdsUtils.getResource(fname));
 
         return objs;
+    }
+
+    @Override
+    public boolean newPdsComment(PdsComment pc) {
+
+        return (pdao.insertPdsComment(pc)>0)? true : false;
+    }
+
+    @Override
+    public List<PdsComment> readPdsComment(String pno) {
+        return pdao.selectPdsComment(pno);
+    }
+
+    @Override
+    public boolean newPdsReply(PdsComment pc) {
+        return (pdao.insertPdsReply(pc)>0)? true : false;
     }
 }
