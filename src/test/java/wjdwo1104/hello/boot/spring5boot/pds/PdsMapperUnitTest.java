@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import wjdwo1104.hello.boot.spring5boot.model.Board;
 import wjdwo1104.hello.boot.spring5boot.model.Pds;
 import wjdwo1104.hello.boot.spring5boot.model.PdsAttach;
+import wjdwo1104.hello.boot.spring5boot.model.PdsComment;
 import wjdwo1104.hello.boot.spring5boot.mybatis.PdsMapper;
 
 import java.util.HashMap;
@@ -50,6 +51,18 @@ public class PdsMapperUnitTest {
 
         PdsAttach result = pdsMapper.selectOnePdsAttach(pno);
 
+
+        assertNotNull(result);
+    }
+    @Test
+    @DisplayName("PdsMapper newcomment Test")
+    void newcomment(){
+        PdsComment pc = new PdsComment();
+        pc.setUserid("abc123");
+        pc.setComments("테스트");
+        pc.setPno("8");
+
+        int result =  pdsMapper.insertPdsComment(pc);
 
         assertNotNull(result);
     }
