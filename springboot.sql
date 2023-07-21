@@ -122,3 +122,71 @@ values ('abc123','대댓글2','1','8');
 select * from pdscomments;
 select * from pdscomments where pno = 8 order by ref;
 
+-- gallery
+
+create table gallery (
+     gno         int             auto_increment,
+     title       varchar(100)    not null,
+     userid      varchar(18)     not null,
+     regdate     datetime        default current_timestamp,
+     thumbs      int             default 0,
+     views       int             default 0,
+     contnets    text            not null,
+     ipaddr      varchar(15)     not null,
+     primary key (gno)
+);
+
+create table galattach(
+                          gano        int             auto_increment,
+                          gno         int             not null, -- 게시글번호
+                          fname       varchar(1024)    not null, -- uuid 포함
+
+                          fsize       varchar(256)      not null,
+                          primary key (gano)
+
+
+);
+
+alter table gallery
+    add constraint fkguid
+        foreign key (userid) references member2(userid);
+alter table galattach
+    add constraint fkgno
+        foreign key (gno) references gallery(gno);
+
+-- view
+create view gga
+as select * from gallery g join galattach ga using(gno);
+
+select * from gga0;
+
+create or replace view gga0
+as
+select gno, title, userid, substring(regdate, 1, 10) regdate, thumbs, views,fname from gallery g join galattach ga using(gno);
+
+
+
+
+/*
+title     			    cno		ref    		pno
+비가 많이 오네요     		1		1		255
+우산을 챙깁시다! 	    	2		2		255
+옷이 많이 젖었어요		    3		3		255
+대중교통을 이용해요     	4		1		255
+전 이미 가망이 없어요      5		5		255
+
+
+
+gno    	fname    		fsize
+1		abc123.png		100
+1		987xyz.jpg		456
+
+
+gno    	fname    					fsize
+1		abc123.png;87xyz.jpg		100;456
+*/
+
+
+
+
+
