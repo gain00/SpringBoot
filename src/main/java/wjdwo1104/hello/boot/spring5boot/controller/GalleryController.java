@@ -65,5 +65,14 @@ public class GalleryController {
 
         return returnPage;
     }
+    @GetMapping("/view/{gno}")
+    public String view(Model m, @PathVariable String gno) {
+        logger.info("pds/view 호출!!");
 
+        m.addAttribute("g", gsrv.readOneGallery(gno));//본문글
+       /* m.addAttribute("pcs", gsrv.readGalComment(gno));//댓글,대댓글*/
+
+
+        return "gallery/view";
+    }
 }
