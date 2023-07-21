@@ -30,6 +30,11 @@ public class GalleryDAOImpl implements GalleryDAO{
     }
 
     @Override
+    public Gallery selectOneGallery(String gno) {
+        return galleryMapper.selectOneGallery(gno);
+    }
+
+    @Override
     public int insertGallery(Gallery g) {
         int cnt = galleryMapper.insertGallery(g);
         if(cnt>0) cnt = galleryMapper.lastGalGno();
